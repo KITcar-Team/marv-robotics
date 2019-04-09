@@ -1,7 +1,7 @@
 # Copyright 2016 - 2018  Ternaris.
 # SPDX-License-Identifier: AGPL-3.0-only
 
-FROM ros:kinetic-ros-base
+FROM ros:melodic-ros-base
 
 WORKDIR /config
 COPY . config/
@@ -33,7 +33,7 @@ RUN apt-get update && \
         python2.7-dev \
         python-opencv \
         python-pip \
-        ros-kinetic-laser-geometry \
+        ros-melodic-laser-geometry \
         rsync \
         sqlite3 \
         ssh \
