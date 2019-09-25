@@ -3,6 +3,9 @@
 
 FROM ros:kinetic-ros-base
 
+WORKDIR /config
+COPY . config/
+
 # This warning can simply be ignore:
 # debconf: delaying package configuration, since apt-utils is not installed
 ARG DEBIAN_FRONTEND=noninteractive
@@ -36,16 +39,22 @@ RUN apt-get update && \
         ssh \
         unzip \
         vim \
+	libsasl2-dev \
+	python-dev \
+	libldap2-dev \
+	libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 RUN pip install -U pip==19.0.3 pip-tools==3.6.0 setuptools==41.0.0 virtualenv==16.4.3 wheel==0.33.1
+
+RUN python -B -m pip install python-ldap
 
 RUN locale-gen en_US.UTF-8; dpkg-reconfigure -f noninteractive locales
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-ARG MARV_UID=1000
-ARG MARV_GID=1000
+ARG MARV_UID=1001
+ARG MARV_GID=1001
 
 RUN groupadd -g $MARV_GID marv && \
     useradd -m -u $MARV_UID -g $MARV_GID --shell /bin/bash marv
