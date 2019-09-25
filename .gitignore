@@ -13,3 +13,6 @@ __pycache__/
 /code/*/build/
 /code/*/dist/
 /venv*/
+/sites/*/store/
+/sites/*/db/
+/sites/*/sessionkey
