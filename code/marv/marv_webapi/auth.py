@@ -5,6 +5,7 @@
 
 from __future__ import absolute_import, division, print_function
 
+import ldap
 import base64
 import bcrypt
 import fcntl
@@ -22,6 +23,19 @@ from marv import utils
 from marv.model import User, Group, db
 from .tooling import api_group as marv_api_group
 
+def ldap_auth(username, password):
+    try:
+        ldap_connection = ldap.initialize('ldap://kitcar_ldap_daemon:389')
+        ldap_connection.protocol_version = ldap.VERSION3
+        ldap_connection.simple_bind_s("uid=" + username +",ou=users,dc=kitcar-team,dc=de", password)
+        ldap_connection.unbind_s()
+        return True
+    except ldap.INVALID_CREDENTIALS:
+        print("invalide credentials")
+        return False
+    except ldap.SERVER_DOWN:
+        print("server is currently not available")
+        return False
 
 # TODO: switch to idempotent OR IGNORE (like tag.py)
 # TODO: move (part) of this to site
@@ -32,12 +46,29 @@ class UserManager(object):
     def authenticate(self, username, password):
         if not username or not password:
             return False
-        try:
-            user = db.session.query(User).filter_by(name=username, realm='marv').one()
-        except NoResultFound:
-            return False
-        hashed = user.password.encode('utf-8')
-        return bcrypt.hashpw(password, hashed) == hashed
+        if ldap_auth(username, password): # Ldap authentification = true?
+            print("ldap credentials correct\n")
+            user = None
+            try:
+                #this is from the newest version... did they change the database??
+                #user = db.session.query(User).filter_by(name=username, realm='marv').one()
+                user = db.session.query(User).filter_by(name=username).one()
+                print("marv db found user credentials correct\n")
+                return True
+            except NoResultFound:
+                # this is the first time the user is logging in, lets create a pseudo account
+                print("marv db no user found\n")
+                name = username.split('.')
+                self.user_add(username, "password", username, name[0], name[1])
+                # now the user exists, lets try again
+                self.group_adduser("admin", username)
+                try:
+                    user = db.session.query(User).filter_by(name=username).one()
+                    print("marv db found user credentials correct\n")
+                    return True
+                except NoResultFound:
+                    print("marv db didnt found user I just created? wtf?\n")
+                    return False
 
     def user_add(self, name, password, realm, realmuid, given_name=None, family_name=None,
                  email=None, time_created=None, time_updated=None, _restore=None):
