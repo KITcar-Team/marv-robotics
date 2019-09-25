@@ -4,6 +4,7 @@ Server
 
 - marv: publishes on port 8450
 - nginx: rosbags.kitcar-team.de to 8450
+- recovery: in /sites/KITcar/ the **db/**, **sessionkey** and **store/** from backup if necessary 
 
 workflow
 =============
@@ -39,6 +40,7 @@ Scan bags
 - ``marv scan`` 							scan the bag folder for new bags
 - ``$container: marv run --col=*``  		do the processing of the new found
 Scanners are called for every directory within the configured scanroots, while files and directories starting with a . and directories containing an (empty) .marvignore file are ignored and will not be traversed into.
+- ``scripts/scan_bags`` can be called e.g. via crontab for automatic scan.  
 
 work on an git branch
 =============
