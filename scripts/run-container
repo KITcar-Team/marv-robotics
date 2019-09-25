@@ -27,22 +27,16 @@ fi
 cd "$(dirname "$(realpath "$0")")"/..
 
 SITE="$1"; shift || usage
-SCANROOT="$1"; shift || usage
-[[ -d "$SCANROOT" ]] || usage
-SCANROOT="$(realpath "$SCANROOT")"
+#SCANROOT="$1"; shift || usage
+#[[ -d "$SCANROOT" ]] || usage
+#SCANROOT="$(realpath "$SCANROOT")"
+SCANROOT="/mnt/webdav/Rosbags/marv/"
 
-BASENAME="$(basename "$PWD" |tr '[:upper:]' '[:lower:]')"
+BASENAME="$(basename "$PWD")"
 NAME="${MARV_CONTAINER_NAME:-$BASENAME}"
 HOSTNAME="${NAME//./-}"
-HTTP="${MARV_HTTP:-127.0.0.1:8000}"
-
-if [[ -n "$MARV_IMAGE" ]]; then
-    IMAGE="$MARV_IMAGE"
-elif [[ -e .image-name ]]; then
-    IMAGE="$(<.image-name)"
-else
-    IMAGE="$BASENAME"
-fi
+HTTP="${MARV_HTTP:-127.0.0.1:8450}"
+IMAGE="kitcar/marv-robotics"
 
 get_timezone() {
     tz=$(cat /etc/timezone 2>/dev/null|| true)
@@ -61,6 +55,7 @@ docker run \
        --name "$NAME" \
        --hostname "$HOSTNAME" \
        --restart unless-stopped \
+       --network kitcar_ldap_network \
        -e COLORFGBG \
        -e "DEVELOP=${DEVELOP:+/home/marv/code}" \
        -e DEBUG \
@@ -68,7 +63,7 @@ docker run \
        -e MARV_INIT \
        -e TERM \
        -e TIMEZONE \
-       -p "$HTTP:8000" \
+       -p "$HTTP:8450" \
        -v "$PWD/code:/home/marv/code" \
        -v "$PWD/docs:/home/marv/docs" \
        -v "$PWD/scripts:/home/marv/scripts" \
