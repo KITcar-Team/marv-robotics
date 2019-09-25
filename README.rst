@@ -7,6 +7,8 @@ Server
 
 workflow
 =============
+- working branch is kitcar_master
+- If you want to update the master, first merge newest master, than REBASE kitcar_master
 
 - ``su marv-user`` Every file should belong to marv user. 
 - If something is root: go to ``/home/marv-user``  and run ``sudo chown -R marv-user:marv-user marv-robotics/``
@@ -42,7 +44,7 @@ work on an git branch
 =============
 To hook the right image, you have to change in file `scripts/run-container` the line <br/> 
 ```
-IMAGE="kitcar/marv-robotics"  <br/>
+IMAGE="kitcar/marv-robotics:kitcar_master"  <br/>
 ```
 to  <br/>
 ```
