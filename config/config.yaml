@@ -1,0 +1,18 @@
+connection:
+  host: kitcar_ldap_daemon:389
+  bindPassword: SECRET_LDAP_PASSWORD
+  baseDN: dc=kitcar-team,dc=de
+  bindDN: cn=admin,dc=kitcar-team,dc=de
+  userBaseDN: ou=users,dc=kitcar-team,dc=de
+  offboardedCaroloAccountsGroupDN: cn=OffboardedCaroloAccounts,ou=groups,dc=kitcar-team,dc=de
+
+defaultGroups:
+ - cn=prospective-members,ou=groups,ou=kitcar-ev,o=kitcar-,dc=kitcar-team,dc=de
+ - cn=associate-members,ou=groups,ou=kitcar-ev,o=kitcar-,dc=kitcar-team,dc=de
+
+auth:
+ userFilter: (|(memberOf=cn=Vorstand,ou=groups,ou=kitcar-ev,o=kitcar-,dc=kitcar-team,dc=de)(memberOf=cn=Admins,ou=groups,dc=kitcar-team,dc=de)(memberOf=cn=Teamleiter,ou=groups,ou=kitcar-hsg,o=kitcar-,dc=kitcar-team,dc=de))
+
+connectionPool:
+  size: 5
+
