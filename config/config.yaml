@@ -11,7 +11,7 @@ defaultGroups:
  - cn=associate-members,ou=groups,ou=kitcar-ev,o=kitcar-,dc=kitcar-team,dc=de
 
 auth:
- userFilter: (|(memberOf=cn=Vorstand,ou=groups,ou=kitcar-ev,o=kitcar-,dc=kitcar-team,dc=de)(memberOf=cn=Admins,ou=groups,dc=kitcar-team,dc=de)(memberOf=cn=Teamleiter,ou=groups,ou=kitcar-hsg,o=kitcar-,dc=kitcar-team,dc=de))
+ userFilter: (|(memberOf=cn=board-members,ou=groups,ou=kitcar-ev,o=kitcar-,dc=kitcar-team,dc=de)(memberOf=cn=Admins,ou=groups,dc=kitcar-team,dc=de)(memberOf=cn=Teamleiter,ou=groups,ou=kitcar-hsg,o=kitcar-,dc=kitcar-team,dc=de))
 
 connectionPool:
   size: 5
