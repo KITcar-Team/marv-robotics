@@ -282,8 +282,8 @@ sqlalchemy==1.2.18 \
     --hash=sha256:8027fa183f5be466030617a497b2d64e0e16c8d615e5a34bdf9fab6f66bf4723
 utm==0.4.2 \
     --hash=sha256:a6608a67df84418fd959a79b228b90ab55b2ae877827f9c210947104c5a75d0e
-werkzeug==0.15.2 \
-    --hash=sha256:0a73e8bb2ff2feecfc5d56e6f458f5b99290ef34f565ffb2665801ff7de6af7a \
-    --hash=sha256:7fad9770a8778f9576693f0cc29c7dcc36964df916b83734f4431c0e612a7fbc \
+werkzeug==0.15.3 \
+    --hash=sha256:97660b282aa7e29f94f3fe378e5c7162d7ab9d601a8dbb1cbb2ffc8f0e54607d \
+    --hash=sha256:cfd1281b1748288e59762c0e174d64d8bcb2b70e7c57bc4a1203c8825af24ac3 \
     # via flask
 
