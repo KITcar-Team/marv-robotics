@@ -84,7 +84,11 @@ fi'
 
 ARG code=code
 
-COPY --chown=marv:marv ${code:-CHANGES.rst} /home/marv/code
+user root
+COPY ${code:-CHANGES.rst} /home/marv/code
+RUN chown -R marv:marv /home/marv/code
+user marv
+
 RUN bash -c '\
 if [[ -z "$code" ]]; then \
     rm /home/marv/code; \
@@ -92,9 +96,14 @@ fi'
 
 ARG docs=docs
 
-COPY --chown=marv:marv CHANGES.rst /home/marv/CHANGES.rst
-COPY --chown=marv:marv tutorial /home/marv/tutorial
-COPY --chown=marv:marv ${docs:-CHANGES.rst} /home/marv/docs
+user root
+COPY CHANGES.rst /home/marv/CHANGES.rst
+RUN chown -R marv:marv /home/marv/CHANGES.rst
+COPY tutorial /home/marv/tutorial
+RUN chown -R marv:marv /home/marv/tutorial
+COPY ${docs:-CHANGES.rst} /home/marv/docs
+RUN chown -R marv:marv /home/marv/docs
+user marv
 RUN bash -c '\
 if [[ -z "$docs" ]]; then \
     rm -r /home/marv/docs /home/marv/CHANGES.rst /home/marv/tutorial; \
@@ -102,7 +111,11 @@ fi'
 
 ARG scripts=scripts
 
-COPY --chown=marv:marv ${scripts:-CHANGES.rst} /home/marv/scripts
+user root
+COPY ${scripts:-CHANGES.rst} /home/marv/scripts
+RUN chown -R marv:marv /home/marv/scripts
+user marv
+
 RUN bash -c '\
 if [[ -z "$scripts" ]]; then \
     rm /home/marv/scripts; \
@@ -132,3 +145,4 @@ RUN echo 'source /etc/profile.d/marv_env.sh' >> /etc/bash.bashrc
 ENV ACTIVATE_VENV=1
 ENTRYPOINT ["/marv_entrypoint.sh"]
 CMD ["/opt/marv/bin/uwsgi", "--die-on-term", "--strict", "--uid", "marv", "--gid", "marv", "--ini", "uwsgi.conf"]
+
