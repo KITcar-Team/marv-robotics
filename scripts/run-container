@@ -36,7 +36,7 @@ BASENAME="$(basename "$PWD")"
 NAME="${MARV_CONTAINER_NAME:-$BASENAME}"
 HOSTNAME="${NAME//./-}"
 HTTP="${MARV_HTTP:-127.0.0.1:8450}"
-IMAGE="kitcar/marv-robotics:kitcar_master"
+IMAGE="kitcar/marv-robotics:marv_kitcar"
 
 get_timezone() {
     tz=$(cat /etc/timezone 2>/dev/null|| true)
