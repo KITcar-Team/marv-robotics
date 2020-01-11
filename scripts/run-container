@@ -54,7 +54,7 @@ docker rm "$NAME" || true
 docker run \
        --name "$NAME" \
        --hostname "$HOSTNAME" \
-       --restart unless-stopped \
+       --restart always \
        --network kitcar_ldap_network \
        -e COLORFGBG \
        -e "DEVELOP=${DEVELOP:+/home/marv/code}" \
