@@ -1,7 +1,3 @@
-backports.functools-lru-cache==1.5 \
-    --hash=sha256:9d98697f088eb1b0fa451391f91afb5e3ebde16bbdb272819fd091151fda4f1a \
-    --hash=sha256:f0b0e4eba956de51238e17573b7087e852dfe9854afd2e9c873f73fc0ca0a6dd \
-    # via matplotlib
 bcrypt==3.1.6 \
     --hash=sha256:0ba875eb67b011add6d8c5b76afbd92166e98b1f1efab9433d5dc0fafc76e203 \
     --hash=sha256:21ed446054c93e209434148ef0b362432bb82bbdaf7beef70a32c221f3e33d1c \
@@ -22,6 +18,7 @@ bcrypt==3.1.6 \
     --hash=sha256:dd08c50bc6f7be69cd7ba0769acca28c846ec46b7a8ddc2acf4b9ac6f8a7457e \
     --hash=sha256:de5badee458544ab8125e63e39afeedfcf3aef6a6e2282ac159c95ae7472d773 \
     --hash=sha256:ede2a87333d24f55a4a7338a6ccdccf3eaa9bed081d1737e0db4dbd1a4f7e6b6
+    # via -r marv.in
 cffi==1.12.2 \
     --hash=sha256:00b97afa72c233495560a0793cdc86c2571721b4271c0667addc83c417f3d90f \
     --hash=sha256:0ba1b0c90f2124459f6966a10c03794082a2f3985cd699d7d63c4a8dae113e11 \
@@ -50,17 +47,21 @@ cffi==1.12.2 \
     --hash=sha256:cbeeef1dc3c4299bd746b774f019de9e4672f7cc666c777cd5b409f0b746dac7 \
     --hash=sha256:e113878a446c6228669144ae8a56e268c91b7f1fafae927adc4879d9849e0ea7 \
     --hash=sha256:e21162bf941b85c0cda08224dade5def9360f53b09f9f259adb85fc7dd0e7b35 \
-    --hash=sha256:fb6934ef4744becbda3143d30c6604718871495a5e36c408431bf33d9c146889 \
+    --hash=sha256:fb6934ef4744becbda3143d30c6604718871495a5e36c408431bf33d9c146889
     # via bcrypt
 click==7.0 \
     --hash=sha256:2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13 \
     --hash=sha256:5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7
+    # via
+    #   -r marv-cli.in
+    #   flask
 configparser==3.7.4 \
     --hash=sha256:8be81d89d6e7b4c0d4e44bcc525845f6da25821de80cb5e06e7e0238a2899e32 \
     --hash=sha256:da60d0014fd8c55eb48c1c5354352e363e2d30bbf7057e5e171a468390184c75
+    # via -r marv.in
 cycler==0.10.0 \
     --hash=sha256:1d8a5ae1ff6c5cf9b93e8811e581232ad8920aeec647c37316ceac982b08cb2d \
-    --hash=sha256:cd7b2d1018258d7247a71425e9f26463dfb444d411c39569972f4ce586b0c9d8 \
+    --hash=sha256:cd7b2d1018258d7247a71425e9f26463dfb444d411c39569972f4ce586b0c9d8
     # via matplotlib
 cython==0.29.6 \
     --hash=sha256:050b082accb95c0a3a6a9dd1ec6fb0bea5321f5b894c8fd0dc6c3abebb68822b \
@@ -90,25 +91,34 @@ cython==0.29.6 \
     --hash=sha256:be69dc0c85cfc78e808fb22753ab2a99bdbd124702b21141a77da50f2fdae00e \
     --hash=sha256:d404cfa5e8595e8c0f81ff19d06a0dcfefcd9a3c8e2bf973985a6cc48731879b \
     --hash=sha256:df0696840e4da454475b83bbe0f8f4f8d90b75e68bfff7bfbe5b97cecc50a1df \
-    --hash=sha256:f7cb71cafe05980404704045110f45c09143ed41dabadb91061c063dd543b924 \
+    --hash=sha256:f7cb71cafe05980404704045110f45c09143ed41dabadb91061c063dd543b924
     # via pycapnp-for-marv
 flask-cors==3.0.7 \
     --hash=sha256:7ad56ee3b90d4955148fc25a2ecaa1124fc84298471e266a7fea59aeac4405a5 \
     --hash=sha256:7e90bf225fdf163d11b84b59fb17594d0580a16b97ab4e1146b1fb2737c1cfec
+    # via -r marv.in
 flask-sqlalchemy==2.3.2 \
     --hash=sha256:3bc0fac969dd8c0ace01b32060f0c729565293302f0c4269beed154b46bec50b \
     --hash=sha256:5971b9852b5888655f11db634e87725a9031e170f37c0ce7851cf83497f56e53
+    # via -r marv.in
 flask==0.12.4 \
     --hash=sha256:2ea22336f6d388b4b242bc3abf8a01244a8aa3e236e7407469ef78c16ba355dd \
     --hash=sha256:6c02dbaa5a9ef790d8219bdced392e2d549c10cd5a5ba4b6aa65126b2271af29
+    # via
+    #   -r marv.in
+    #   flask-cors
+    #   flask-sqlalchemy
 itsdangerous==1.1.0 \
     --hash=sha256:321b033d07f2a4136d3ec762eac9f16a10ccd60f53c0c91af90217ace7ba1f19 \
-    --hash=sha256:b12271b2047cb23eeb98c8b5622e2e5c5e9abd9784a153e9d8ef9cb4dd09d749 \
+    --hash=sha256:b12271b2047cb23eeb98c8b5622e2e5c5e9abd9784a153e9d8ef9cb4dd09d749
     # via flask
-jinja2==2.10.1 \
-    --hash=sha256:065c4f02ebe7f7cf559e49ee5a95fb800a9e4528727aec6f24402a5374c65013 \
-    --hash=sha256:14dd6caf1527abb21f08f86c784eac40853ba93edb79552aa1e4b8aef1b61c7b \
-    # via flask, pycapnp-for-marv
+jinja2==2.11.3 \
+    --hash=sha256:03e47ad063331dd6a3f04a43eddca8a966a26ba0c5b7207a9a9e4e08f1b29419 \
+    --hash=sha256:a6d58433de0ae800347cab1fa3043cebbabe8baa9d29e668f1c768cb87a333c6
+    # via
+    #   -r marv.in
+    #   flask
+    #   pycapnp-for-marv
 kiwisolver==1.0.1 \
     --hash=sha256:0ee4ed8b3ae8f5f712b0aa9ebd2858b5b232f1b9a96b0943dceb34df2a223bc3 \
     --hash=sha256:0f7f532f3c94e99545a29f4c3f05637f4d2713e7fd91b4dd8abfc18340b86cd5 \
@@ -137,7 +147,7 @@ kiwisolver==1.0.1 \
     --hash=sha256:e0f910f84b35c36a3513b96d816e6442ae138862257ae18a0019d2fc67b041dc \
     --hash=sha256:ea36e19ac0a483eea239320aef0bd40702404ff8c7e42179a2d9d36c5afcb55c \
     --hash=sha256:efabbcd4f406b532206b8801058c8bab9e79645b9880329253ae3322b7b02cd5 \
-    --hash=sha256:f923406e6b32c86309261b8195e24e18b6a8801df0cfc7814ac44017bfcb3939 \
+    --hash=sha256:f923406e6b32c86309261b8195e24e18b6a8801df0cfc7814ac44017bfcb3939
     # via matplotlib
 markupsafe==1.1.1 \
     --hash=sha256:00bc623926325b26bb9605ae9eae8a215691f33cae5df11ca5424f06f2d1f473 \
@@ -167,7 +177,7 @@ markupsafe==1.1.1 \
     --hash=sha256:ba59edeaa2fc6114428f1637ffff42da1e311e29382d81b339c1817d37ec93c6 \
     --hash=sha256:c8716a48d94b06bb3b2524c2b77e055fb313aeb4ea620c8dd03a105574ba704f \
     --hash=sha256:cd5df75523866410809ca100dc9681e301e3c27567cf498077e8551b6d20e42f \
-    --hash=sha256:e249096428b3ae81b08327a63a485ad0878de3fb939049038579ac0ef61e17e7 \
+    --hash=sha256:e249096428b3ae81b08327a63a485ad0878de3fb939049038579ac0ef61e17e7
     # via jinja2
 matplotlib==2.2.4 \
     --hash=sha256:029620799e581802961ac1dcff5cb5d3ee2f602e0db9c0f202a90495b37d2126 \
@@ -192,6 +202,7 @@ matplotlib==2.2.4 \
     --hash=sha256:e4621af28a2444f93b5b6d3d60f54767df8ac6daa510a98f68c34377cb474869 \
     --hash=sha256:f3755a52aae7fb640f5f57b7b63eb5d65688c84931d7833dbc7d03959cd4f8ce \
     --hash=sha256:f99c43df8ed2b9d1c95a042f3cacf017f9690092feba0b4292eaa6713f92de97
+    # via -r marv-robotics.in
 numpy==1.16.2 \
     --hash=sha256:1980f8d84548d74921685f68096911585fee393975f53797614b34d4f409b6da \
     --hash=sha256:22752cd809272671b273bb86df0f505f505a12368a3a5fc0aa811c7ece4dfd5c \
@@ -215,11 +226,12 @@ numpy==1.16.2 \
     --hash=sha256:d20c0360940f30003a23c0adae2fe50a0a04f3e48dc05c298493b51fd6280197 \
     --hash=sha256:d3b3ed87061d2314ff3659bb73896e622252da52558f2380f12c421fbdee3d89 \
     --hash=sha256:dc235bf29a406dfda5790d01b998a1c01d7d37f449128c0b1b7d1c89a84fae8b \
-    --hash=sha256:fb3c83554f39f48f3fa3123b9c24aecf681b1c289f9334f8215c1d3c8e2f6e5b \
+    --hash=sha256:fb3c83554f39f48f3fa3123b9c24aecf681b1c289f9334f8215c1d3c8e2f6e5b
     # via matplotlib
 pathlib2==2.3.3 \
     --hash=sha256:25199318e8cc3c25dcb45cbe084cc061051336d5a9ea2a12448d3d8cb748f742 \
     --hash=sha256:5887121d7f7df3603bca2f710e7219f3eca0eb69e0b7cc6e0a022e155ac931a7
+    # via -r marv.in
 pendulum==2.0.4 \
     --hash=sha256:0f43d963b27e92b04047ce8352e4c277db99f20d0b513df7d0ceafe674a2f727 \
     --hash=sha256:14e60d26d7400980123dbb6e3f2a90b70d7c18c63742ffe5bd6d6a643f8c6ef1 \
@@ -228,6 +240,7 @@ pendulum==2.0.4 \
     --hash=sha256:bfc7b33ae193a204ec0bec12ad0d2d3300cd7e51d91d992da525ba3b28f0d265 \
     --hash=sha256:cd70b75800439794e1ad8dbfa24838845e171918df81fa98b68d0d5a6f9b8bf2 \
     --hash=sha256:cf535d36c063575d4752af36df928882b2e0e31541b4482c97d63752785f9fcb
+    # via -r marv.in
 pillow==6.0.0 \
     --hash=sha256:15c056bfa284c30a7f265a41ac4cbbc93bdbfc0dfe0613b9cb8a8581b51a9e55 \
     --hash=sha256:1a4e06ba4f74494ea0c58c24de2bb752818e9d504474ec95b0aa94f6b0a7e479 \
@@ -255,61 +268,54 @@ pillow==6.0.0 \
     --hash=sha256:dca5660e25932771460d4688ccbb515677caaf8595f3f3240ec16c117deff89a \
     --hash=sha256:de7aedc85918c2f887886442e50f52c1b93545606317956d65f342bd81cb4fc3 \
     --hash=sha256:e6c0bbf8e277b74196e3140c35f9a1ae3eafd818f7f2d3a15819c49135d6c062
+    # via -r marv-robotics.in
 pycapnp-for-marv==0.6.3 \
     --hash=sha256:4df5b460d86a9d8cb5a7ca17609b12a2a9701fb2e15ed393dbf0aa656ae2bb66
+    # via -r marv.in
 pycparser==2.19 \
-    --hash=sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3 \
+    --hash=sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3
     # via cffi
 pyjwt==1.7.1 \
     --hash=sha256:5c6eca3c2940464d106b99ba83b00c6add741c9becaec087fb7ccdefea71350e \
     --hash=sha256:8d59a976fb773f3e6a39c85636357c4f0e242707394cadadd9814f5cbaa20e96
+    # via -r marv.in
 pyparsing==2.4.0 \
     --hash=sha256:1873c03321fc118f4e9746baf201ff990ceb915f433f23b395f5580d1840cb2a \
-    --hash=sha256:9b6323ef4ab914af344ba97510e966d64ba91055d6b9afa6b30799340e89cc03 \
+    --hash=sha256:9b6323ef4ab914af344ba97510e966d64ba91055d6b9afa6b30799340e89cc03
     # via matplotlib
 python-dateutil==2.8.0 \
     --hash=sha256:7e6584c74aeed623791615e26efd690f29817a27c73085b78e4bad02493df2fb \
-    --hash=sha256:c89805f6f4d64db21ed966fda138f8a5ed7a4fdbc1a8ee329ce1b74e3c74da9e \
-    # via matplotlib, pendulum
+    --hash=sha256:c89805f6f4d64db21ed966fda138f8a5ed7a4fdbc1a8ee329ce1b74e3c74da9e
+    # via
+    #   matplotlib
+    #   pendulum
 pytz==2018.9 \
     --hash=sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9 \
-    --hash=sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c \
+    --hash=sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c
     # via matplotlib
 pytzdata==2018.9 \
     --hash=sha256:9626e42fd9df77b16aedbd909d1e5fda839be47966adb7089b990f3452c45dd8 \
-    --hash=sha256:dddaaf4f1717820a6fdcac94057e03c1a15b3829a44d9eaf19988917977db408 \
+    --hash=sha256:dddaaf4f1717820a6fdcac94057e03c1a15b3829a44d9eaf19988917977db408
     # via pendulum
-scandir==1.10.0 \
-    --hash=sha256:2586c94e907d99617887daed6c1d102b5ca28f1085f90446554abf1faf73123e \
-    --hash=sha256:2ae41f43797ca0c11591c0c35f2f5875fa99f8797cb1a1fd440497ec0ae4b022 \
-    --hash=sha256:2b8e3888b11abb2217a32af0766bc06b65cc4a928d8727828ee68af5a967fa6f \
-    --hash=sha256:2c712840c2e2ee8dfaf36034080108d30060d759c7b73a01a52251cc8989f11f \
-    --hash=sha256:4d4631f6062e658e9007ab3149a9b914f3548cb38bfb021c64f39a025ce578ae \
-    --hash=sha256:67f15b6f83e6507fdc6fca22fedf6ef8b334b399ca27c6b568cbfaa82a364173 \
-    --hash=sha256:7d2d7a06a252764061a020407b997dd036f7bd6a175a5ba2b345f0a357f0b3f4 \
-    --hash=sha256:8c5922863e44ffc00c5c693190648daa6d15e7c1207ed02d6f46a8dcc2869d32 \
-    --hash=sha256:92c85ac42f41ffdc35b6da57ed991575bdbe69db895507af88b9f499b701c188 \
-    --hash=sha256:b24086f2375c4a094a6b51e78b4cf7ca16c721dcee2eddd7aa6494b42d6d519d \
-    --hash=sha256:cb925555f43060a1745d0a321cca94bcea927c50114b623d73179189a4e100ac \
-    # via pathlib2
 six==1.12.0 \
     --hash=sha256:3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c \
-    --hash=sha256:d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73 \
-    # via bcrypt, cycler, flask-cors, matplotlib, pathlib2, python-dateutil
+    --hash=sha256:d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73
+    # via
+    #   bcrypt
+    #   cycler
+    #   flask-cors
+    #   matplotlib
+    #   pathlib2
+    #   python-dateutil
 sqlalchemy==1.2.18 \
     --hash=sha256:8027fa183f5be466030617a497b2d64e0e16c8d615e5a34bdf9fab6f66bf4723
-subprocess32==3.5.3 \
-    --hash=sha256:24a7f627ef7a5695138601b665057ad131fa26e80d49d5ffa6b4fdb2357a80d3 \
-    --hash=sha256:6bc82992316eef3ccff319b5033809801c0c3372709c5f6985299c88ac7225c3 \
-    # via matplotlib
-typing==3.6.6 \
-    --hash=sha256:4027c5f6127a6267a435201981ba156de91ad0d1d98e9ddc2aa173453453492d \
-    --hash=sha256:57dcf675a99b74d64dacf6fba08fb17cf7e3d5fdff53d4a30ea2a5e7e52543d4 \
-    --hash=sha256:a4c8473ce11a65999c8f59cb093e70686b6c84c98df58c1dae9b3b196089858a \
-    # via pendulum
+    # via
+    #   -r marv.in
+    #   flask-sqlalchemy
 utm==0.4.2 \
     --hash=sha256:a6608a67df84418fd959a79b228b90ab55b2ae877827f9c210947104c5a75d0e
+    # via -r marv-robotics.in
 werkzeug==0.15.2 \
     --hash=sha256:0a73e8bb2ff2feecfc5d56e6f458f5b99290ef34f565ffb2665801ff7de6af7a \
-    --hash=sha256:7fad9770a8778f9576693f0cc29c7dcc36964df916b83734f4431c0e612a7fbc \
+    --hash=sha256:7fad9770a8778f9576693f0cc29c7dcc36964df916b83734f4431c0e612a7fbc
     # via flask
